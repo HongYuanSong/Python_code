@@ -8,4 +8,8 @@
 
 rabbitmq
 
+自定义django扩展插件
+1. 万能权限
+2. 基于bootstrap分页
+
 
