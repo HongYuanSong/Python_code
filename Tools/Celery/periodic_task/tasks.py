@@ -1,12 +1,9 @@
-__author__ = 'shy'
-__date__ = '2018/3/20 10:19'
-
-from celery import Celery
+from __future__ import absolute_import, unicode_literals
+from .celery import app
 from celery.schedules import crontab
 
 
-app = Celery()
-
+##########通过函数创建定时任务##########
 
 @app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):

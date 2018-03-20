@@ -28,9 +28,8 @@ def on_request(ch, method, properties, body):
 
     ch.basic_publish(exchange='',
                      routing_key=properties.reply_to,
-                     properties=pika.BasicProperties(correlation_id= properties.correlation_id),
+                     properties=pika.BasicProperties(correlation_id=properties.correlation_id),
                      body=str(response))
-
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 

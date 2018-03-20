@@ -33,6 +33,7 @@ class FibRPCClient(object):
                                    ),
                                    body=str(n))
         while self.response is None:
+            # 建立进程事件循环，监听返回结果
             self.connection.process_data_events()
         return int(self.response)
 
