@@ -29,7 +29,7 @@ tornado：
 
   celery
     1. periodic_task
-    2. django_use
+    2. django_use  
 
 
 自定义django扩展插件
