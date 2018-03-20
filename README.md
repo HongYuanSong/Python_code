@@ -22,6 +22,11 @@ tornado：
   2. 自定义异步非阻塞web框架
 
 
+自定义django扩展插件
+  1. 万能权限
+  2. 基于bootstrap分页
+
+
 工具：
   rabbitmq
     1. basic send and receive
@@ -34,11 +39,6 @@ tornado：
   celery
     1. periodic_task
     2. django_use
-
-
-自定义django扩展插件
-  1. 万能权限
-  2. 基于bootstrap分页
 
 
 框架图总结：
