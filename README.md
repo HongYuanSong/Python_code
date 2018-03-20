@@ -28,7 +28,7 @@ tornado：
 
 
 工具：
-  rabbitmq
+rabbitmq
   1. basic send and receive
   2. dispatch
   3. task_fanout
@@ -36,7 +36,7 @@ tornado：
   5. task_topic
   6. RPC
 
-  celery
+celery
   1. periodic_task
   2. django_use
 
