@@ -152,6 +152,9 @@ class AsyncRequest:
 
     def run(self):
         while True:
+            # 调用select方法监听conn和connection列表中的文件描述符对象，\
+            # 当conn中某个文件描述符对象发生变化，该文件描述符会添加到readable列表中，\
+            # connection中只要有文件描述符，就会全部添加到writable列表中
             readable, writable, error = select.select(self.conn, self.connection, self.conn, 0.05)
             for w in writable:
                 print(w.host, '连接成功...')
@@ -167,7 +170,7 @@ class AsyncRequest:
                 recv_data = bytes()
                 while True:
                     try:
-                        chunk = r.socket.recv(2048)
+                        chunk = r.socket.recv(1024)
                         recv_data += chunk
                     except Exception as e:
                         break
