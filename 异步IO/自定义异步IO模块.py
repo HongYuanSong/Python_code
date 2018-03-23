@@ -82,7 +82,7 @@ import select
 # sk.close()
 
 
-# 三、建立非阻塞socket，通过IO多路复用，实现并发请求（异步IO模块）
+# 三、建立非阻塞socket，通过IO多路复用，实现并发请求（异步IO）
 #
 # 实现思路：
 # 1.定义HttpRequest类：

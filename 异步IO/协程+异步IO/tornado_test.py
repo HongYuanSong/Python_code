@@ -8,15 +8,17 @@ COUNT = 0
 
 
 def handle_response(response):
+
     global COUNT
     COUNT -= 1
+
     if response.error:
         print("Error:", response.error)
     else:
         print(response.body)
-        # 方法同twisted
-        # ioloop.IOLoop.current().stop()
+
     if COUNT == 0:
+        # step5
         ioloop.IOLoop.current().stop()
 
 
@@ -27,11 +29,16 @@ def func():
     ]
     global COUNT
     COUNT = len(url_list)
+
     for url in url_list:
         print(url)
+        # step3
         http_client = AsyncHTTPClient()
+        # step4
         http_client.fetch(HTTPRequest(url), handle_response)
 
 
+# step1
 ioloop.IOLoop.current().add_callback(func)
-ioloop.IOLoop.current().start() # 死循环
+# step2
+ioloop.IOLoop.current().start()
