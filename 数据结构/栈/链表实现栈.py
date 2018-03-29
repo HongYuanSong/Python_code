@@ -13,7 +13,7 @@ class LStack: # stack implemented as a linked node list
     def __init__(self):
         self.top = None
         self.elems = []
-        
+
     def is_empty(self):
         return self.top is None
 

@@ -26,7 +26,7 @@ def task(url):
 if __name__ == '__main__':
     url_list = [
         'http://www.baidu.com',
-        'http://www.bing.com',
+        # 'http://www.bing.com',
     ]
 
     defer_list = []
@@ -34,6 +34,7 @@ if __name__ == '__main__':
     for url in url_list:
         # step1
         v = task(url)
+        print("=====>", v)
         # step2
         defer_list.append(v)
 

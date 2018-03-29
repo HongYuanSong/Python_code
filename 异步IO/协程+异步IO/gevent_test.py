@@ -1,11 +1,13 @@
 __author__ = 'shy'
 __date__ = '2018/3/20 13:05'
 
-import gevent
+
 # gevent=greenlet+异步IO
 # gevent也只实现了TCP没有实现HTTP请求的异步IO
 # grequests模块（gevent+requests）
 
+
+import gevent
 import requests
 from gevent import monkey
 

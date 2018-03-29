@@ -72,6 +72,7 @@ class ExecutionEngine(object):
                 self.scheduler.enqueue_request(req)
 
     def _next_request(self):
+        # 根据max、crawling、size关系，执行不同操作
         if self.scheduler.size() == 0 and len(self.crawlling) == 0:
             self._closewait.callback(None)
             return
@@ -87,6 +88,7 @@ class ExecutionEngine(object):
 
     @defer.inlineCallbacks
     def open_spider(self, start_requests):
+        # 实例化scheduler，将req加入scheduler队列，调用_next_request
         self.scheduler = Scheduler()
         yield self.scheduler.open()
         while True:
@@ -120,6 +122,7 @@ class Crawler(object):
 
     @defer.inlineCallbacks
     def crawl(self, spider_cls_path):
+        # 实例引擎、spider，yield defer对象，引出引擎类
         engine = self._create_engine()
         spider = self._create_spider(spider_cls_path)
         start_requests = iter(spider.start_requests())
@@ -128,19 +131,18 @@ class Crawler(object):
 
 
 class CrawlerProcess(object):
-    """
-    开启事件循环
-    """
 
     def __init__(self):
         self._active = set()
 
     def crawl(self, spider_cls_path):
+        # 实例crawler，创建defer，加入集合
         crawler = Crawler()
         d = crawler.crawl(spider_cls_path)
         self._active.add(d)
 
     def start(self):
+        # 开启事件循环
         dd = defer.DeferredList(self._active)
         dd.addBoth(lambda _: reactor.stop())
 

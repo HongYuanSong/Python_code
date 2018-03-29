@@ -4,7 +4,7 @@ __date__ = '2018/3/19 10:01'
 
 def bubble_sort(array):
     count = len(array)
-    for i in range(count):
+    for i in range(count-1):
         for j in range(count - i - 1):
             if array[j] > array[j + 1]:
                 array[j], array[j + 1] = array[j + 1], array[j]

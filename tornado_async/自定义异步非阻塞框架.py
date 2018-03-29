@@ -174,7 +174,7 @@ class MyTornado:
         try:
             while True:
                 readable, writable, error = select.select(self.conn_set, [], self.conn_set, 0.05)
-                for conn in self.conn_set:
+                for conn in readable:
                     if conn == sk:
                         client, addr = conn.accept()
                         client.setblocking(False)

@@ -36,6 +36,7 @@ __date__ = '2018/3/20 14:17'
 import socket
 import select
 
+
 # # 一、通过socket发送HTTP请求(阻塞)
 #
 #
@@ -127,8 +128,8 @@ class HttpResponse:
         self.body = body
         header_list = headers.split(b'\r\n')
         for h in header_list:
-            h_str = str(h,encoding='utf-8')
-            v = h_str.split(':',1)
+            h_str = str(h, encoding='utf-8')
+            v = h_str.split(':', 1)
             if len(v) == 2:
                 self.header_dict[v[0]] = v[1]
 
@@ -136,7 +137,7 @@ class HttpResponse:
 class AsyncRequest:
     def __init__(self):
         self.conn = []
-        self.connection = [] # 用于检测是否已经连接成功
+        self.connection = []  # 用于检测是否已经连接成功
 
     def add_request(self, host, callback):
         try:
@@ -160,7 +161,7 @@ class AsyncRequest:
                 print(w.host, '连接成功...')
                 # 只要循环中取到w，表示socket和服务器端已经连接成功
 
-                request_header = "GET / HTTP/1.0\r\nHost:{0}\r\n\r\n".format(w.host,)
+                request_header = "GET / HTTP/1.0\r\nHost:{0}\r\n\r\n".format(w.host, )
                 w.socket.send(bytes(request_header, encoding='utf-8'))
 
                 self.connection.remove(w)
@@ -195,19 +196,13 @@ def f2(response):
 
 
 url_list = [
-    {'host':'www.baidu.com','callback': f1},
-    {'host':'cn.bing.com','callback': f2},
-    {'host':'www.cnblogs.com','callback': f2},
+    {'host': 'www.baidu.com', 'callback': f1},
+    {'host': 'cn.bing.com', 'callback': f2},
+    {'host': 'www.cnblogs.com', 'callback': f2},
 ]
-
 
 req = AsyncRequest()
 for item in url_list:
     req.add_request(item['host'], item['callback'])
 
 req.run()
-
-
-
-
-
